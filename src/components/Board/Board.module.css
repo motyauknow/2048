@@ -1,0 +1,17 @@
+.board {
+    background-color: #bbada0;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.row:last-child {
+    margin-bottom: 0px;
+}

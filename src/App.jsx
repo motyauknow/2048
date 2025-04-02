@@ -8,10 +8,10 @@ function App() {
 
   return (
     <>
-      
       <h1>2048!</h1>
-      <div>Счёт: {score}</div>
+      <div>Счёт: {score} </div>
       <Board board={board}/>
+      {gameOver && <div className=''>Game over</div>}
     </>
   )
 }

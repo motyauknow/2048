@@ -41,6 +41,7 @@ export default function useGameLogic() {
   });
 
   const [score, setScore] = useState(0);
+  const [moves, setMoves] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
   // Проверка окончания игры
@@ -124,6 +125,7 @@ export default function useGameLogic() {
         if (moved) {
           setScore((prev) => prev + scoreIncrease);
           const updatedBoard = addRandomTile(newBoard);
+
           if (checkGameOver(updatedBoard)) setGameOver(true);
           console.log("moved");
           return updatedBoard;
@@ -143,6 +145,7 @@ export default function useGameLogic() {
         e.preventDefault();
         new Audio(sound).play();
         moveTiles(e.key.replace("Arrow", "").toLowerCase());
+        setMoves((prev) => prev + 1);
       }
     };
 
@@ -150,5 +153,5 @@ export default function useGameLogic() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [moveTiles]);
 
-  return { board, score, gameOver, moveTiles, restart};
+  return { board, score, gameOver, moves, moveTiles, restart};
 }

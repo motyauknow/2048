@@ -9,6 +9,11 @@ const createInitialBoard = () => [
 ];
 
 export default function useGameLogic() {
+  const restart = () => {
+    location.reload();
+  };
+
+
   const addRandomTile = useCallback((board) => {
     const newBoard = board.map((row) => [...row]);
     const emptyCells = [];
@@ -67,7 +72,7 @@ export default function useGameLogic() {
             moved = true;
             if (filtered[i] == filtered[i + 1]) {
               merged.push(filtered[i] * 2);
-              scoreIncrease += filtered[i] * 2;
+              scoreIncrease += filtered[i];
               i++;
               moved = true;
               console.log(moved);
@@ -145,5 +150,5 @@ export default function useGameLogic() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [moveTiles]);
 
-  return { board, score, gameOver, moveTiles };
+  return { board, score, gameOver, moveTiles, restart};
 }
